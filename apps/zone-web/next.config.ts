@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "yt3.googleusercontent.com", pathname: "/**" },
+    ],
+  },
   // Don't fail build on ESLint errors (common for example projects)
   eslint: {
     ignoreDuringBuilds: true,
