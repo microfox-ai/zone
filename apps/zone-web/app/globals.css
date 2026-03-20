@@ -117,8 +117,8 @@ html {
 }
 
 body {
-  background-color: #050505;
-  color: #d1d1d1;
+  background-color: oklch(1 0 0);
+  color: oklch(0.145 0 0);
 }
 
 /* --- PERFORMANCE OPTIMIZED WAVEFORM --- */

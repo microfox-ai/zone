@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Loader2, XCircle, Play, RefreshCw, ArrowRight, Clock } from 'lucide-react';
 import { useWorkflowJob } from '@/hooks/useWorkflowJob';
 import type { QueueJobResult } from '@/hooks/useWorkflowJob';
+import { ProtectedPage } from '@/components/auth/ProtectedPage';
 
 /**
  * Queue ID to trigger.
@@ -60,7 +61,8 @@ export default function QueueDemoPage() {
   const queueJob = output && 'steps' in output ? (output as QueueJobResult) : null;
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <ProtectedPage>
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
       <div className="mb-6">
         <h1 className="text-3xl font-bold mb-2">Queue Demo</h1>
         <p className="text-muted-foreground mb-4">
@@ -94,7 +96,10 @@ export default function QueueDemoPage() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="operation">Operation Type</Label>
-              <Select value={operation} onValueChange={(v: any) => setOperation(v)}>
+              <Select
+                value={operation}
+                onValueChange={(v: 'analyze' | 'transform' | 'validate') => setOperation(v)}
+              >
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
@@ -301,6 +306,7 @@ export default function QueueDemoPage() {
           </div>
         </CardContent>
       </Card>
-    </div>
+      </div>
+    </ProtectedPage>
   );
 }

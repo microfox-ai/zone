@@ -11,6 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Loader2, XCircle, Play, RefreshCw, Globe, Film, Zap, ChevronDown, ChevronRight } from 'lucide-react';
 import { useWorkflowJob } from '@/hooks/useWorkflowJob';
 import type { WorkerJobResult } from '@/hooks/useWorkflowJob';
+import { ProtectedPage } from '@/components/auth/ProtectedPage';
 
 function OutputSection({ workerOutput, status }: { workerOutput: WorkerJobResult | null; status: string }) {
   const [showRaw, setShowRaw] = useState(false);
@@ -270,7 +271,8 @@ function FFprobeWorkerPanel() {
 
 export default function WorkerDemoPage() {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-3xl">
+    <ProtectedPage>
+      <div className="container mx-auto px-4 py-8 max-w-3xl">
       <div className="mb-6">
         <h1 className="text-3xl font-bold mb-2">Worker demo</h1>
         <p className="text-muted-foreground">
@@ -300,6 +302,7 @@ export default function WorkerDemoPage() {
           <FFprobeWorkerPanel />
         </TabsContent>
       </Tabs>
-    </div>
+      </div>
+    </ProtectedPage>
   );
 }
