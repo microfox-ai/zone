@@ -4,11 +4,13 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Workflow, Zap, Layers, ListOrdered } from 'lucide-react';
+import { Zap, Layers, ListOrdered } from 'lucide-react';
+import { ProtectedPage } from '@/components/auth/ProtectedPage';
 
 export default function WorkflowsPage() {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <ProtectedPage>
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-2">Workflow Examples</h1>
         <p className="text-muted-foreground">
@@ -92,6 +94,7 @@ export default function WorkflowsPage() {
           </p>
         </CardContent>
       </Card>
-    </div>
+      </div>
+    </ProtectedPage>
   );
 }
