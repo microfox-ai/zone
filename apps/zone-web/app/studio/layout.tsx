@@ -10,6 +10,7 @@ import { Toaster } from "sonner";
 import { Loader2 } from "lucide-react";
 import Head from "next/head";
 import { useParams } from "next/navigation";
+import { ProtectedPage } from "@/components/auth/ProtectedPage";
 
 
 export default function StudioLayout({ children }: { children: React.ReactNode }) {
@@ -20,7 +21,7 @@ export default function StudioLayout({ children }: { children: React.ReactNode }
     return <div>Not allowed</div>
   }
   return (
-    <>
+    <ProtectedPage>
       <Head>
         <link
           href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block"
@@ -65,6 +66,6 @@ export default function StudioLayout({ children }: { children: React.ReactNode }
           </AppSessionProvider>
         </FileUploadProvider>
       </Suspense>
-    </>
+    </ProtectedPage>
   )
 }
