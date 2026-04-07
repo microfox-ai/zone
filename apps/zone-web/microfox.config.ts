@@ -55,4 +55,30 @@ export const StudioConfig = {
       },
     },
   },
+  deploymentConfig: {
+    projectId: process.env.MICROFOX_PROJECT_ID || '1b30d467-165d-470c-8624-903a229deef4',
+    publish: {
+      subdomain: "zone",
+      agentName: "zone",
+      handles: {
+        agent: "/agent",
+        openapi: "/docs.json",
+        public: "/public"
+      }
+    },
+    deployment: {
+      apiMode: 'staging',
+      apiVersion: 'v2',
+      ignorePatterns: ['.build/**', 'package-lock.json'],
+    },
+    worker: {
+      externalDeps: ["@microfox/puppeteer-sls", "@sparticuz/chromium", "sharp"],
+      includeNodeModules: false,
+      groups: {
+        scraper: {
+          includeNodeModules: true
+        }
+      }
+    }
+  },
 };
